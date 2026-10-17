@@ -14,7 +14,8 @@ namespace ConfigReader
             ReadOnly = true,
             AllowUserToAddRows = false,
             AutoGenerateColumns = true,
-            AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells,
+            AllowUserToResizeColumns = true,
+            AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None,
             SelectionMode = DataGridViewSelectionMode.FullRowSelect
         };
 
@@ -47,6 +48,7 @@ namespace ConfigReader
                 try
                 {
                     grid.DataSource = new BindingList<ConfigEntry>(ConfigParser.Parse(dlg.FileName));
+                    grid.AutoResizeColumns(DataGridViewAutoSizeColumnsMode.AllCells);
                     pathBox.Text = dlg.FileName;
                 }
                 catch (Exception ex)
